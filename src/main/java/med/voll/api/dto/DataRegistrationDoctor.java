@@ -8,22 +8,22 @@ import jakarta.validation.constraints.Pattern;
 import med.voll.api.utils.Specialty;
 
 public record DataRegistrationDoctor(
-        @NotBlank
+        @NotBlank(message = "O campo nome é obrigatório")
         String nome,
-        @NotBlank
+        @NotBlank(message = "O campo email é obrigatório")
         @Email
         String email,
 
-        @NotBlank
+        @NotBlank(message = "O campo telefone é obrigatório")
         @Pattern(regexp = "\\d{11}")
         String telefone,
 
-        @NotBlank
+        @NotBlank(message = "O campo crm é obrigatório")
         @Pattern(regexp = "\\d{4,6}")
         String crm,
-        @NotNull
+        @NotNull(message = "O campo especialidade é obrigatório")
         Specialty especialidade,
-        @NotNull
+        @NotNull(message = "Nome é obrigatório")
         @Valid
         AddressData endereco
 ) {
