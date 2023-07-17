@@ -11,4 +11,8 @@ No primeiro curso foram incluídos os seguintes recursos:
   - Validações, paginação e ordenação
 
 No segundo curso foram incluídos os seguintes recursos:
+  - Tratamento de erros
+  - Segurança da api com Spring SecurIty e controle de acesso (autenticação e autorização) com JWT
+
+No terceiro curso foram incluídos os seguintes recursos:
   - em desenvolvimento... 
