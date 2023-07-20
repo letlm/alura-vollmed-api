@@ -1,48 +1,42 @@
-package med.voll.api.model;
+package med.voll.api.domain.patient;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import med.voll.api.dto.DataRegistrationDoctor;
-import med.voll.api.dto.DataUpdateDoctor;
-import med.voll.api.utils.Specialty;
+import med.voll.api.domain.address.Address;
 
-@Table(name="doctors")
-@Entity(name="Doctor")
+@Table(name = "pacientes")
+@Entity(name = "Patient")
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")
-public class Doctor {
+public class Patient {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
     private String email;
+    private String cpf;
     private String telefone;
-    private String crm;
-
-    @Enumerated(EnumType.STRING)
-    private Specialty especialidade;
 
     @Embedded
     private Address endereco;
 
     private Boolean ativo;
 
-    public Doctor(DataRegistrationDoctor data) {
+    public Patient(DataPatientRegistration data) {
         this.ativo = true;
         this.nome = data.nome();
         this.email = data.email();
+        this.cpf = data.cpf();
         this.telefone = data.telefone();
-        this.crm = data.crm();
-        this.especialidade = data.especialidade();
         this.endereco = new Address(data.endereco());
     }
 
-    public void updateInformations(DataUpdateDoctor data) {
+    public void updateInformations(DataUpdatePatient data) {
         if (data.nome() != null){
             this.nome = data.nome();
         }
@@ -52,9 +46,10 @@ public class Doctor {
         if (data.endereco() != null) {
             this.endereco.updateInformations(data.endereco());
         }
+
     }
 
-    public void inactivate(Doctor doctor) {
+    public void inactivate(Patient patient) {
         this.ativo = false;
     }
 }

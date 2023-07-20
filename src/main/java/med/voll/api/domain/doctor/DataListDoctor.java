@@ -1,7 +1,4 @@
-package med.voll.api.dto;
-
-import med.voll.api.model.Doctor;
-import med.voll.api.utils.Specialty;
+package med.voll.api.domain.doctor;
 
 public record DataListDoctor(Long id, String nome, String email, String crm, Specialty especialidade) {
 

@@ -1,4 +1,4 @@
-package med.voll.api.dto;
+package med.voll.api.infra.security;
 
 public record DataTokenJWT(String token) {
 }
