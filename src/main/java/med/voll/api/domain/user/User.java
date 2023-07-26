@@ -1,6 +1,4 @@
 package med.voll.api.domain.user;
-
-
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;

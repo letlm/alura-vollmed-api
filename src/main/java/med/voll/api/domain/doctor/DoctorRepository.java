@@ -1,6 +1,4 @@
 package med.voll.api.domain.doctor;
-
-import med.voll.api.domain.doctor.Doctor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -13,28 +11,29 @@ public interface DoctorRepository extends JpaRepository<Doctor, Long> {
 
 
     @Query("""
-            select d from Doctor d
+            select m from Doctor m
             where
-            d.ativo = 1
+            m.ativo = true
             and
-            d.especialidade = :especialidade
+            m.especialidade = :especialidade
             and
-            d.id not in(
-                select a.medico.id from Appointment a
+            m.id not in(
+                select c.medico.id from Appointment c
                 where
-                a.data = :data
+                c.data = :data
+                and
+                c.motivoCancelamento is null
             )
             order by rand()
             limit 1
-            """)
+        """)
     Doctor chooseRandomDoctorFreeOnDate(Specialty especialidade, LocalDateTime data);
 
-
     @Query("""
-            select d.ativo
-            from Doctor d
+            select m.ativo
+            from Doctor m
             where
-            d.id = :id 
+            m.id = :id
             """)
-    Boolean findAtivoById(Long idMedico);
+    Boolean findAtivoById(Long id);
 }
