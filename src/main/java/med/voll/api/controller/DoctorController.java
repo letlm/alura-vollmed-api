@@ -1,6 +1,7 @@
 package med.voll.api.controller;
 
-import jakarta.transaction.Transactional;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+import org.springframework.transaction.annotation.Transactional;
 import jakarta.validation.Valid;
 import med.voll.api.domain.doctor.DataDetailsDoctor;
 import med.voll.api.domain.doctor.DataListDoctor;
@@ -18,6 +19,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 @RestController
 @RequestMapping("doctors")
+@SecurityRequirement(name = "bearer-key")
 public class DoctorController {
     @Autowired
     private DoctorRepository repository;
