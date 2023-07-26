@@ -1,8 +1,4 @@
 package med.voll.api.domain.appointment;
-
-import jakarta.validation.constraints.Future;
-import jakarta.validation.constraints.NotNull;
-
 import java.time.LocalDateTime;
 
 public record DataDetailsAppointment(
@@ -10,11 +6,10 @@ public record DataDetailsAppointment(
 
         Long idMedico,
 
-        @NotNull
         Long idPaciente,
-
-        @NotNull
-        @Future
         LocalDateTime data
 ) {
+        public DataDetailsAppointment(Appointment appointment) {
+                this(appointment.getId(), appointment.getMedico().getId(), appointment.getPaciente().getId(), appointment.getData());
+        }
 }
