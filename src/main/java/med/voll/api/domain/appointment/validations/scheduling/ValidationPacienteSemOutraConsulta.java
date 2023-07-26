@@ -3,21 +3,23 @@ package med.voll.api.domain.appointment.validations.scheduling;
 import med.voll.api.domain.NewValidationException;
 import med.voll.api.domain.appointment.AppointmentRepository;
 import med.voll.api.domain.appointment.DataScheduleAppointment;
-import med.voll.api.domain.appointment.validations.scheduling.ValidationScheduleAppointment;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class BusyDoctorValidation implements ValidationScheduleAppointment {
+public class ValidationPacienteSemOutraConsulta implements ValidationScheduleAppointment {
 
     @Autowired
     private AppointmentRepository repository;
     public void validate(DataScheduleAppointment data){
 
-        var doctorIsBusy = repository.existsByMedicoIdAndData(data.idMedico(), data.data());
+        var firstTime = data.data().withHour(7);
+        var lastTime = data.data().withHour(18);
 
-        if (doctorIsBusy) {
-            throw new NewValidationException("O médico já possui outra consulta nesse mesmo horário.");
+        var patientIsBusy = repository.existsByPacienteIdAndDataBetween(data.idPaciente(), firstTime, lastTime);
+
+        if (patientIsBusy) {
+            throw new NewValidationException("O paciente já possui outra consulta nesse mesmo horário.");
         }
 
     }

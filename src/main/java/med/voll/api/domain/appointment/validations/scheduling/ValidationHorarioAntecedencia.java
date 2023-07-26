@@ -2,10 +2,13 @@ package med.voll.api.domain.appointment.validations.scheduling;
 
 import med.voll.api.domain.NewValidationException;
 import med.voll.api.domain.appointment.DataScheduleAppointment;
+import org.springframework.stereotype.Component;
+
 import java.time.Duration;
 import java.time.LocalDateTime;
 
-public class AdvanceTimeValidation {
+@Component("ValidationHorarioAntecendenciaAgendamento")
+public class ValidationHorarioAntecedencia implements ValidationScheduleAppointment{
     public void validate(DataScheduleAppointment data){
 
         var consultationDate = data.data();

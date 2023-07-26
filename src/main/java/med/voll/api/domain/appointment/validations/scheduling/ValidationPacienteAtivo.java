@@ -2,14 +2,13 @@ package med.voll.api.domain.appointment.validations.scheduling;
 
 import med.voll.api.domain.NewValidationException;
 import med.voll.api.domain.appointment.DataScheduleAppointment;
-import med.voll.api.domain.appointment.validations.scheduling.ValidationScheduleAppointment;
 import med.voll.api.domain.patient.PatientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 
 @Component
-public class ActivePatientValidation implements ValidationScheduleAppointment {
+public class ValidationPacienteAtivo implements ValidationScheduleAppointment {
 
     @Autowired
     private PatientRepository repository;

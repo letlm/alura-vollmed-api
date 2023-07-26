@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 import java.time.DayOfWeek;
 
 @Component
-public class ClinicWorkingHoursValidation implements ValidationScheduleAppointment {
+public class ValidationHorarioFuncionamento implements ValidationScheduleAppointment {
 
     public void validate(DataScheduleAppointment data){
         var consultationDate = data.data();
