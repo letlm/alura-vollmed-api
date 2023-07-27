@@ -9,7 +9,6 @@ import java.time.LocalDateTime;
 public interface DoctorRepository extends JpaRepository<Doctor, Long> {
     Page<Doctor> findAllByAtivoTrue(Pageable pagination);
 
-
     @Query("""
             select m from Doctor m
             where
