@@ -15,4 +15,7 @@ No segundo curso foram incluídos os seguintes recursos:
   - Segurança da api com Spring SecurIty e controle de acesso (autenticação e autorização) com JWT
 
 No terceiro curso foram incluídos os seguintes recursos:
-  - em desenvolvimento... 
+  - Funcionalidade de agendamento e cancelamento de consultas;
+  - Validações de integridade da api;
+  - Documentação da api com a biblioteca SpringDoc;
+  - Testes automatizados.
